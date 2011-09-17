@@ -50,6 +50,11 @@ var snippets = {
         ,'Donec posuere turpis et augue tempus volutpat. Proin dignissim nisi non risus elementum fermentum.']
 };
 
+    console.log('Compare shorter and shorter:');
+    dumbDiff.lines(snippets.shorter, snippets.shorter);
+    console.log('Compare shorter and longer:');
+    dumbDiff.lines(snippets.shorter, snippets.longer);
+
 </script>
 </body>
 </html>

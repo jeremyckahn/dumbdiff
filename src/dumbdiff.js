@@ -34,8 +34,15 @@
     global.dumbDiff = global.dumbDiff || {};
     dd = global.dumbDiff;
 
-    dd.lines = function lines (linesArr1, linesArr2) {
-       console.log(findFirstDifferentLine(linesArr1, linesArr2));
+    dd.lines = function lines (older, newer) {
+        var olderReversed
+            ,newerReversed;
+
+        olderReversed = older.slice(0).reverse();
+        newerReversed = newer.slice(0).reverse();
+
+        console.log(findFirstDifferentLine(older, newer));
+        console.log(findFirstDifferentLine(olderReversed, newerReversed));
     };
 
 })(this);
