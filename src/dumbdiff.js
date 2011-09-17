@@ -36,13 +36,17 @@
 
     dd.lines = function lines (older, newer) {
         var olderReversed
-            ,newerReversed;
+            ,newerReversed
+            ,diffRangeStart
+            ,diffRangeEnd;
 
         olderReversed = older.slice(0).reverse();
         newerReversed = newer.slice(0).reverse();
 
-        console.log(findFirstDifferentLine(older, newer));
-        console.log(findFirstDifferentLine(olderReversed, newerReversed));
+        diffRangeStart = findFirstDifferentLine(older, newer);
+        diffRangeEnd = findFirstDifferentLine(olderReversed, newerReversed);
+
+        return newer.slice(diffRangeStart, diffRangeEnd);
     };
 
 })(this);
