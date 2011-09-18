@@ -1,8 +1,16 @@
 <html>
-<head><head>
+<head>
+<link href="qunit/qunit/qunit.css" rel="stylesheet" type="text/css" />
+<head>
 <body>
-<p>Open your console.</p>
+<h1 id="qunit-header">QUnit example</h1>
+ <h2 id="qunit-banner"></h2>
+ <div id="qunit-testrunner-toolbar"></div>
+ <h2 id="qunit-userAgent"></h2>
+ <ol id="qunit-tests"></ol>
+ <div id="qunit-fixture">test markup, will be hidden</div>
 <script src="src/dumbDiff.js"></script>
+<script src="qunit/qunit/qunit.js"></script>
 <script>
 
 var snippets = {
@@ -53,21 +61,77 @@ var snippets = {
         ,'Donec posuere turpis et augue tempus volutpat. Proin dignissim nisi non risus elementum fermentum.']
 };
 
+    
+    test('Compare line1 and line2:', function() {
+        var result = dumbDiff.lines(snippets.line1, snippets.line2);
+        
+        equal(result.lines.length, 1, 'There was one different line.');
+        equal(result.rangeStart, 0, 'Diff range started at line 0.');
+        equal(result.rangeEnd, 0, 'Diff range ended at line 0.');
+    });
+
+
+    test('Compare shorter and shorter:', function() {
+        var result = dumbDiff.lines(snippets.shorter, snippets.shorter);
+        
+        equal(result.lines.length, 0, 'Diff is empty.');
+        equal(result.rangeStart, -1, 'There was no diff range start.');
+        equal(result.rangeEnd, -1, 'There was no diff range end.');
+    });
+   
+ 
+    test('Compare shorter and longer:', function() {
+        var result = dumbDiff.lines(snippets.shorter, snippets.longer);
+        
+        equal(result.lines.length, 1, 'There was one different line.');
+        equal(result.lines[0], 'THIS IS AN EXTRA LINE', 'Diff contains the first line that is only present in the new version.');
+        equal(result.rangeStart, 7, 'Diff range started at line 7.');
+        equal(result.rangeEnd, 7, 'Diff range ended at line 7.');
+    });
+
+
+    test('Compare shorter and longest:', function() {
+        var result = dumbDiff.lines(snippets.shorter, snippets.longest);
+        
+        equal(result.lines.length, 2, 'There were two different lines.');
+        equal(result.lines[0], 'THIS IS AN EXTRA LINE', 'Diff contains the first line that is only present in the new version.');
+        equal(result.lines[1], 'THIS IS ANOTHER EXTRA LINE', 'Diff contains the second line that is only present in the new version.');
+        equal(result.rangeStart, 7, 'Diff range started at line 7.');
+        equal(result.rangeEnd, 8, 'Diff range ended at line 8.');
+    });
+
+
+    test('Compare shorter and shorterModified:', function() {
+        var result = dumbDiff.lines(snippets.shorter, snippets.shorterModified);
+        
+        equal(result.lines.length, 1, 'There was 1 different line.');
+        equal(result.lines[0], 'DIFFERENT LINE 1', 'Diff contains the first line that is only present in the new version.');
+        equal(result.rangeStart, 3, 'Diff range started at line 3.');
+        equal(result.rangeEnd, 3, 'Diff range ended at line 3.');
+    });
+
+
+    test('Compare shorter and shorterModifiedRange:', function() {
+        var result = dumbDiff.lines(snippets.shorter, snippets.shorterModifiedRange);
+        
+        equal(result.lines.length, 2, 'There were 2 different lines.');
+        equal(result.lines[0], 'DIFFERENT LINE 1', 'Diff contains the first line that is only present in the new version.');
+        equal(result.lines[1], 'DIFFERENT LINE 2', 'Diff contains the second line that is only present in the new version.');
+        equal(result.rangeStart, 3, 'Diff range started at line 3.');
+        equal(result.rangeEnd, 4, 'Diff range ended at line 4.');
+    });
+
+
+    test('Compare shorterModified and shorterModifiedRange:', function() {
+        var result = dumbDiff.lines(snippets.shorterModified, snippets.shorterModifiedRange);
+        
+        equal(result.lines.length, 1, 'There was 1 different line.');
+        equal(result.lines[0], 'DIFFERENT LINE 2', 'Diff contains the first line that is only present in the new version.');
+        equal(result.rangeStart, 4, 'Diff range started at line 4.');
+        equal(result.rangeEnd, 4, 'Diff range ended at line 4.');
+    });
+
     console.log(snippets);
-    console.log('Compare shorter and shorter:');
-    console.log(dumbDiff.lines(snippets.shorter, snippets.shorter));
-    console.log('Compare shorter and longer:');
-    console.log(dumbDiff.lines(snippets.shorter, snippets.longer));
-    console.log('Compare shorter and longest:');
-    console.log(dumbDiff.lines(snippets.shorter, snippets.longest));
-    console.log('Compare shorter and shorterModified:');
-    console.log(dumbDiff.lines(snippets.shorter, snippets.shorterModified));
-    console.log('Compare shorter and shorterModifiedRange:');
-    console.log(dumbDiff.lines(snippets.shorter, snippets.shorterModifiedRange));
-    console.log('Compare shorterModified and shorterModifiedRange:');
-    console.log(dumbDiff.lines(snippets.shorterModified, snippets.shorterModifiedRange));
-    console.log('Compare line1 and line2:');
-    console.log(dumbDiff.lines(snippets.line1, snippets.line2));
 
 </script>
 </body>
