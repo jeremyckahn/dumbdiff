@@ -54,6 +54,12 @@ var snippets = {
     console.log(dumbDiff.lines(snippets.shorter, snippets.shorter));
     console.log('Compare shorter and longer:');
     console.log(dumbDiff.lines(snippets.shorter, snippets.longer));
+    console.log('Compare shorter and longest:');
+    console.log(dumbDiff.lines(snippets.shorter, snippets.longest));
+    console.log('Compare shorter and shorterModified:');
+    console.log(dumbDiff.lines(snippets.shorter, snippets.shorterModified));
+    console.log('Compare shorter and shorterModifiedRange:');
+    console.log(dumbDiff.lines(snippets.shorter, snippets.shorterModifiedRange));
 
 </script>
 </body>

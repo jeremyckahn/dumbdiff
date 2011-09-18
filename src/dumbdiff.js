@@ -52,8 +52,18 @@
         } else {
             differentLines = newer.slice(diffRangeStart, diffRangeEnd);
         }
-
-        return differentLines;
+        
+        // There was no difference across the files.
+        // Fudge the ranges to be indicative of this.
+        if (differentLines.length === 0) {
+            diffRangeStart = diffRangeEnd = -1;
+        }
+        
+        return {
+            'lines': differentLines
+            ,'rangeStart': diffRangeStart
+            ,'rangeEnd': diffRangeEnd
+        };
     };
 
 })(this);
