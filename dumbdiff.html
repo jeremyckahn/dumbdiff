@@ -1,11 +1,14 @@
 <html>
 <head><head>
 <body>
+<p>Open your console.</p>
 <script src="src/dumbDiff.js"></script>
 <script>
 
 var snippets = {
-   'shorter':
+    'line1': ['This is a line.']
+   , 'line2': ['This is a different line.']
+   ,'shorter':
         ['Lorem ipsum dolor sit amet, consectetur adipiscing elit.' 
         ,'Morbi aliquet tempus leo vel volutpat. Nunc at malesuada metus.' 
         ,'Donec vel mi in eros tempus pellentesque. Donec interdum nulla ac elit lobortis semper.'
@@ -63,6 +66,8 @@ var snippets = {
     console.log(dumbDiff.lines(snippets.shorter, snippets.shorterModifiedRange));
     console.log('Compare shorterModified and shorterModifiedRange:');
     console.log(dumbDiff.lines(snippets.shorterModified, snippets.shorterModifiedRange));
+    console.log('Compare line1 and line2:');
+    console.log(dumbDiff.lines(snippets.line1, snippets.line2));
 
 </script>
 </body>

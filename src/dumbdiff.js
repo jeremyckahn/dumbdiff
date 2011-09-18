@@ -55,10 +55,15 @@
         } else {
             differentLines = newer.slice(diffRangeStart, diffRangeEnd);
         }
+
+        if (diffRangeEnd > 0) {
+            diffRangeEnd -= 1;
+        }
         
         return {
             'lines': differentLines
             ,'rangeStart': diffRangeStart
+            ,'rangeEnd': diffRangeEnd
         };
     };
 
