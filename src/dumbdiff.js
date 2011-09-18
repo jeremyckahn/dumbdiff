@@ -48,21 +48,17 @@
         diffRangeEnd = newer.length - findFirstDifferentLine(olderReversed, newerReversed);
 
         if (diffRangeStart === -1) {
-           differentLines = []; 
+            // There was no difference across the files.
+            // Fudge the ranges to be indicative of this.
+            differentLines = []; 
+            diffRangeEnd = -1;
         } else {
             differentLines = newer.slice(diffRangeStart, diffRangeEnd);
-        }
-        
-        // There was no difference across the files.
-        // Fudge the ranges to be indicative of this.
-        if (differentLines.length === 0) {
-            diffRangeStart = diffRangeEnd = -1;
         }
         
         return {
             'lines': differentLines
             ,'rangeStart': diffRangeStart
-            ,'rangeEnd': diffRangeEnd
         };
     };
 
