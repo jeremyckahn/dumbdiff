@@ -38,15 +38,22 @@
         var olderReversed
             ,newerReversed
             ,diffRangeStart
-            ,diffRangeEnd;
+            ,diffRangeEnd
+            ,differentLines;
 
         olderReversed = older.slice(0).reverse();
         newerReversed = newer.slice(0).reverse();
 
         diffRangeStart = findFirstDifferentLine(older, newer);
-        diffRangeEnd = findFirstDifferentLine(olderReversed, newerReversed);
+        diffRangeEnd = newer.length - findFirstDifferentLine(olderReversed, newerReversed);
 
-        return newer.slice(diffRangeStart, diffRangeEnd);
+        if (diffRangeStart === -1) {
+           differentLines = []; 
+        } else {
+            differentLines = newer.slice(diffRangeStart, diffRangeEnd);
+        }
+
+        return differentLines;
     };
 
 })(this);
