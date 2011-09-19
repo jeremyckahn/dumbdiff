@@ -65,6 +65,11 @@
             differentLines = []; 
             diffRangeEnd = -1;
         } else {
+            // The new version is shorter than the old version.  The diff should contain everything from the first missing line to the end of the new version.
+            if (newer.length < older.length) {
+                diffRangeEnd = newer.length;
+            }
+
             differentLines = newer.slice(diffRangeStart, diffRangeEnd);
         }
 

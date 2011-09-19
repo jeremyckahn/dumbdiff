@@ -142,10 +142,10 @@ var snippets = {
     test('Compare shorter and shorterMissingLine:', function() {
         var result = dumbDiff.lines(snippets.shorter, snippets.shorterMissingLine);
         console.log(result)
-        equal(result.lines.length, 6, 'There were 6 different lines.');
+        equal(result.lines.length, 5, 'There were 5 different lines.');
         //equal(result.lines[0], 'DIFFERENT LINE 2', 'Diff contains the first line that is only present in the new version.');
         equal(result.rangeStart, 1, 'Diff range started at line 1.');
-        equal(result.rangeEnd, 7, 'Diff range ended at line 7.');
+        equal(result.rangeEnd, 5, 'Diff range ended at line 5.');
     });
 
     console.log(snippets);
