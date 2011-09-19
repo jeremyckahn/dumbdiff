@@ -10,7 +10,7 @@ It is distributed under an [MIT License](http://en.wikipedia.org/wiki/MIT_Licens
 API
 ===
 
-dumbDiff.lines:
+dumbdiff.lines:
 ---
 
 ````javascript
@@ -18,7 +18,7 @@ dumbDiff.lines:
  * @param {Array} oldVersion
  * @param {Array} newVersion
  */
-dumbDiff.lines( oldVersion, newVersion )
+dumbdiff.lines( oldVersion, newVersion )
 ````
 The important thing to note here is that both `oldVersion` and `newVersion` need to be Arrays of Strings.  The idea here is that each Array element represents a line of text.
 

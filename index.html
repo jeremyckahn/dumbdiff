@@ -71,7 +71,7 @@ var snippets = {
 
     
     test('Compare line1 and line2:', function() {
-        var result = dumbDiff.lines(snippets.line1, snippets.line2);
+        var result = dumbdiff.lines(snippets.line1, snippets.line2);
         
         equal(result.lines.length, 1, 'There was one different line.');
         equal(result.rangeStart, 0, 'Diff range started at line 0.');
@@ -80,7 +80,7 @@ var snippets = {
 
 
     test('Compare shorter and shorter:', function() {
-        var result = dumbDiff.lines(snippets.shorter, snippets.shorter);
+        var result = dumbdiff.lines(snippets.shorter, snippets.shorter);
         
         equal(result.lines.length, 0, 'Diff is empty.');
         equal(result.rangeStart, -1, 'There was no diff range start.');
@@ -89,7 +89,7 @@ var snippets = {
    
  
     test('Compare shorter and longer:', function() {
-        var result = dumbDiff.lines(snippets.shorter, snippets.longer);
+        var result = dumbdiff.lines(snippets.shorter, snippets.longer);
         
         equal(result.lines.length, 1, 'There was one different line.');
         equal(result.lines[0], 'THIS IS AN EXTRA LINE', 'Diff contains the first line that is only present in the new version.');
@@ -99,7 +99,7 @@ var snippets = {
 
 
     test('Compare shorter and longest:', function() {
-        var result = dumbDiff.lines(snippets.shorter, snippets.longest);
+        var result = dumbdiff.lines(snippets.shorter, snippets.longest);
         
         equal(result.lines.length, 2, 'There were two different lines.');
         equal(result.lines[0], 'THIS IS AN EXTRA LINE', 'Diff contains the first line that is only present in the new version.');
@@ -110,7 +110,7 @@ var snippets = {
 
 
     test('Compare shorter and shorterModified:', function() {
-        var result = dumbDiff.lines(snippets.shorter, snippets.shorterModified);
+        var result = dumbdiff.lines(snippets.shorter, snippets.shorterModified);
         
         equal(result.lines.length, 1, 'There was 1 different line.');
         equal(result.lines[0], 'DIFFERENT LINE 1', 'Diff contains the first line that is only present in the new version.');
@@ -120,7 +120,7 @@ var snippets = {
 
 
     test('Compare shorter and shorterModifiedRange:', function() {
-        var result = dumbDiff.lines(snippets.shorter, snippets.shorterModifiedRange);
+        var result = dumbdiff.lines(snippets.shorter, snippets.shorterModifiedRange);
         
         equal(result.lines.length, 2, 'There were 2 different lines.');
         equal(result.lines[0], 'DIFFERENT LINE 1', 'Diff contains the first line that is only present in the new version.');
@@ -131,7 +131,7 @@ var snippets = {
 
 
     test('Compare shorterModified and shorterModifiedRange:', function() {
-        var result = dumbDiff.lines(snippets.shorterModified, snippets.shorterModifiedRange);
+        var result = dumbdiff.lines(snippets.shorterModified, snippets.shorterModifiedRange);
         
         equal(result.lines.length, 1, 'There was 1 different line.');
         equal(result.lines[0], 'DIFFERENT LINE 2', 'Diff contains the first line that is only present in the new version.');
@@ -140,10 +140,9 @@ var snippets = {
     });
 
     test('Compare shorter and shorterMissingLine:', function() {
-        var result = dumbDiff.lines(snippets.shorter, snippets.shorterMissingLine);
+        var result = dumbdiff.lines(snippets.shorter, snippets.shorterMissingLine);
         console.log(result)
         equal(result.lines.length, 5, 'There were 5 different lines.');
-        //equal(result.lines[0], 'DIFFERENT LINE 2', 'Diff contains the first line that is only present in the new version.');
         equal(result.rangeStart, 1, 'Diff range started at line 1.');
         equal(result.rangeEnd, 5, 'Diff range ended at line 5.');
     });

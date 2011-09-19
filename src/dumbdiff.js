@@ -1,6 +1,7 @@
 /**
  * dumbdiff.js
  * https://github.com/jeremyckahn/dumbdiff
+ * v 0.1.0
  * 
  * Author:  jeremyckahn@gmail.com
  * MIT License.
@@ -10,7 +11,7 @@
  * of a body of text, and memory use/disk space is less of a priority.
  */
 
-;(function dumbDiff (global) {
+;(function dumbdiff (global) {
     var dd;
 
     function findFirstDifferentLine (linesArr1, linesArr2) {
@@ -43,8 +44,8 @@
         return firstDifferentLine;
     }
 
-    global.dumbDiff = global.dumbDiff || {};
-    dd = global.dumbDiff;
+    global.dumbdiff = global.dumbdiff || {};
+    dd = global.dumbdiff;
 
     dd.lines = function lines (older, newer) {
         var olderReversed
