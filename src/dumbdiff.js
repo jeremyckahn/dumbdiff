@@ -1,3 +1,15 @@
+/**
+ * dumbdiff.js
+ * https://github.com/jeremyckahn/dumbdiff
+ * 
+ * Author:  jeremyckahn@gmail.com
+ * MIT License.
+ * 
+ * This is a deliberately "dumb" diffing algorithm that favors CPU optimization over memory efficiency.
+ * It is most appropriate to use this algorithm if it is going to be called very frequently on two versions 
+ * of a body of text, and memory use/disk space is less of a priority.
+ */
+
 ;(function dumbDiff (global) {
     var dd;
 
