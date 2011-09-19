@@ -1,7 +1,7 @@
 /**
  * dumbdiff.js
  * https://github.com/jeremyckahn/dumbdiff
- * v 0.1.0
+ * v 0.1.1
  * 
  * Author:  jeremyckahn@gmail.com
  * MIT License.
@@ -82,6 +82,8 @@
             'lines': differentLines
             ,'rangeStart': diffRangeStart
             ,'rangeEnd': diffRangeEnd
+            ,'oldLength': older.length
+            ,'newLength': newer.length
         };
     };
 

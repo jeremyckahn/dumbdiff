@@ -29,6 +29,8 @@ This method always returns an Object.  It looks like this:
     'lines': Array // Contains the lines of the diff.  
     ,'rangeStart': Number // 0-based start of the diff.  This is -1 if there were no different lines.
     ,'rangeEnd': Number // 0-based end of the diff.  This is -1 if there were no different lines.
+    ,'oldLength': Number // The length of `oldVersion` array.
+    ,'newLength': Number // The length of `newVersion` array.
 }
 ````
 
