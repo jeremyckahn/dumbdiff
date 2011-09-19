@@ -31,3 +31,5 @@ This method always returns an Object.  It looks like this:
     ,'rangeEnd': Number // 0-based end of the diff.  This is -1 if there were no different lines.
 }
 ````
+
+If a line was deleted, then the diff contains everything from the start of the missing line to the end of `newVersion`.
